@@ -33,9 +33,6 @@ const FarmerSchema = mongoose.Schema({
     village : {
         type : String,
     }, 
-    block : {
-        type : String,
-    }, 
     district : {
         type : String,
     },
@@ -70,31 +67,31 @@ const FarmerSchema = mongoose.Schema({
         type : String,
     },
     totalAreaUnderCultivation : {
-        type : Number,
+        type : String,
     },
     familyMembers : {
-        type : Number,
+        type : String,
     },
     children : {
-        type : Number,
+        type : String,
     },
     cattles : {
         type : Array
     },
     annualIncome : {
-        type : Number
+        type : String
     },
     scannedAadhar : {
-        type : Number
+        type : String
     },
     bankName : {
-        type : Number
+        type : String
     },
     ifsc : {
-        type : Number
+        type : String
     },
     accountNumber : {
-        type : Number
+        type : String
     }
 });
 
