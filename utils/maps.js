@@ -27,4 +27,13 @@ const farmerMap = {
     "Bank Account Number" : "accountNumber"
 }
 
-module.exports = {farmerMap};
+const mapmap = {
+    "id": "excel_id",
+    "Area": "area",
+    "goemetry": "geometry",
+    "long": "long",
+    "lat": "lat",
+    "feild name": "feild_name"
+}
+
+module.exports = {farmerMap, mapmap};
