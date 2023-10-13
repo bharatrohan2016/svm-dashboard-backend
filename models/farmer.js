@@ -92,7 +92,12 @@ const FarmerSchema = mongoose.Schema({
     },
     accountNumber : {
         type : String
+    },
+    cropsArray : {
+        type : Array
     }
+},{
+    timestamps: true
 });
 
 const farmer = mongoose.model('farmer', FarmerSchema);

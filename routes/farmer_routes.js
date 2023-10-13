@@ -28,15 +28,24 @@ router.post('/farmer', async(req, res) => {
 
 router.post('/farmer-csv', upload.single('csv'), async (req, res) => {
     try{
-        console.log("hit")
+        
         console.log(req.file);
         const jsonArray=await csv().fromFile(req.file.path);
-        console.log(jsonArray);
+    
         for(let jsonItem of jsonArray) {
             let insertedItem = {};
             for(let key in jsonItem){
-                insertedItem[farmerMap[key]] = jsonItem[key]
+                //remove the spaces and make lowercase for map purpose.
+                let cleanedKey = key.trim().toLowerCase();
+                
+                //remove the trailing spaces in values.
+                jsonItem[key] = jsonItem[key]?.trim();
+                
+                //map the cleaned value with keyname that is in backend.
+                insertedItem[farmerMap[cleanedKey]] = jsonItem[key] !="" ? jsonItem[key] : "-";
             }
+            
+            //insert the cleaned object in the database.
             const entry = await create(insertedItem);
         }
 
@@ -58,6 +67,33 @@ router.get('/farmer', async(req, res) => {
     }
 })
 
+
+router.post('/filter-farmers', async(req, res) => {
+    try{
+        const { village, source, crops } = req.body;
+        let query = {};
+
+        if(village) {
+            query['village'] = village;
+        }
+
+        let data = await findAll(query);
+
+        //crops are string data type. Need to filter after fetching.
+        if(crops){
+             data = data.filter((item) => item.crops?.toLowerCase().includes(crops) === true);
+        }
+
+        data.sort();
+        
+        res.send({
+            result : "success", data
+        })
+    }
+    catch(e){
+        console.log(e);
+    }
+})
 
 router.get('/farmer/:id', async(req, res) => {
     try{
@@ -92,4 +128,5 @@ router.delete('/farmer/:id', async(req, res) => {
         console.log(e);
     }
 })
+
 module.exports = router;

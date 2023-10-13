@@ -6,8 +6,8 @@ const create = async (entry) =>{
     return entry;
 }
 
-const findAll = async () =>{
-    const entries = await  FarmerSchema.find();
+const findAll = async (query={}) =>{
+    let entries = await  FarmerSchema.find(query);
     return entries;
 }
 
