@@ -1,15 +1,17 @@
 const express = require('express');
-const { create, findAll, findById, update, delete_ } = require('../controllers/farmer_controller');
+const { create, findAll, findById, update, delete_, createMap } = require('../controllers/farmer_controller');
 const router = express.Router(); 
 const multer = require('multer');
 const csv = require('csvtojson');
 const fs = require('fs');
-const { farmerMap } = require('../utils/maps');
+const { farmerMap, mapmap } = require('../utils/maps');
+const Maps = require('../models/map');
 
 const csvFilePath='../uploads/csv';
 
 //define upload directory for csv files.
 const upload = multer({dest : 'uploads/csv'});
+const uploadMap = multer({dest: 'uploads/mapcsv'})
 
 
 router.post('/farmer', async(req, res) => {
@@ -128,5 +130,4 @@ router.delete('/farmer/:id', async(req, res) => {
         console.log(e);
     }
 })
-
 module.exports = router;

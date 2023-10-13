@@ -1,4 +1,5 @@
 const FarmerSchema = require('../models/farmer');
+const Maps = require('../models/map');
 
 const create = async (entry) =>{
     const instance = new FarmerSchema(entry);
@@ -26,4 +27,10 @@ const delete_ = async(_id) => {
     return entry;
 }
 
-module.exports = {create, findAll, findById, update, delete_};
+const createMap = async (entry) =>{
+    const instance = new Maps(entry);
+    entry = await instance.save();
+    return entry;
+}
+
+module.exports = {create, findAll, findById, update, delete_, createMap};
