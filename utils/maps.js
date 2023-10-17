@@ -29,12 +29,15 @@ const farmerMap = {
 }
 
 const mapmap = {
-    "id": "excel_id",
+    "Field ID - Final": "excel_id",
+    "Field ID - Survey 2": "excel_id_2",
     "Area": "area",
     "goemetry": "geometry",
     "long": "long",
     "lat": "lat",
-    "feild name": "feild_name"
+    "Farmer name": "farmer_name",
+    "Contact": "contact",
+    "Village": "village"
 }
 
 module.exports = {farmerMap, mapmap};
