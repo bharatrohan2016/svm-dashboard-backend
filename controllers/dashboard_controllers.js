@@ -25,7 +25,6 @@ const totalItems = async(req, res) => {
 
         for (const farmer of farmers) {
             const area = parseFloat(farmer.totalAreaUnderCultivation);
-            console.log(`Parsing "${farmer.totalAreaUnderCultivation}" to ${area}`);
             totalArea += isNaN(area) ? 0 : area;
         }
 
