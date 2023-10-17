@@ -130,4 +130,36 @@ router.delete('/farmer/:id', async(req, res) => {
         console.log(e);
     }
 })
+
+router.post('/farmer-maps-csv', uploadMap.single('csv'), async (req, res) => {
+    try{
+        console.log("hit")
+        console.log(req.file);
+        const jsonArray=await csv().fromFile(req.file.path);
+        console.log(jsonArray);
+        for(let jsonItem of jsonArray) {
+            let insertedItem = {};
+            for(let key in jsonItem){
+                insertedItem[mapmap[key]] = jsonItem[key]
+            }
+            const entry = await createMap(insertedItem);
+        }
+
+        res.send({result : "success"});
+    }catch(e){
+        console.log(e);
+    }
+})
+
+router.get('/farmer-maps-data', async (req, res) => {
+    try {
+        const data = await Maps.find();
+        res.status(200).json(data)
+    } catch (e) {
+        console.log(e);
+        res.status(404).json('Error while fetching')
+    }
+})
+
+
 module.exports = router;
