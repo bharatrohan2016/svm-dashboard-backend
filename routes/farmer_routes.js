@@ -50,8 +50,8 @@ router.post('/farmer-csv', upload.single('csv'), async (req, res) => {
             //insert the cleaned object in the database.
             const entry = await create(insertedItem);
         }
-
-        res.send({result : "success"});
+        const data = await findAll();
+        res.send({result : "success", data});
     }catch(e){
         console.log(e);
     }

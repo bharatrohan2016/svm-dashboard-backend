@@ -18,7 +18,7 @@ const FarmerSchema = mongoose.Schema({
     source : {
         type : String,
     }, 
-    numberOfLastYearCrops : {
+    cropsGrown : {
         type : String,
     }, 
     tehsil : {
@@ -45,7 +45,7 @@ const FarmerSchema = mongoose.Schema({
     billingState : {
         type : String
     },
-    billingZip : {
+    billingZipCode : {
         type : String,
     },
     billingCountry : {
@@ -61,6 +61,9 @@ const FarmerSchema = mongoose.Schema({
         type : String,
     },
     shippingCountry : {
+        type : String,
+    },
+    shippingZipCode : {
         type : String,
     },
     majorBuyer : {
@@ -81,7 +84,7 @@ const FarmerSchema = mongoose.Schema({
     annualIncome : {
         type : String
     },
-    scannedAadhar : {
+    aadhaarNumber : {
         type : String
     },
     bankName : {
