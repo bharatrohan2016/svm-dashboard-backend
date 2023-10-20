@@ -9,7 +9,34 @@ const FarmerSchema = mongoose.Schema({
     parentAccount : {
         type : String,
     },
+    feildId : {
+        type : String,
+    },
     phone : {
+        type : String,
+    },
+    lat : {
+        type : String,
+    },
+    long : {
+        type : String,
+    },
+    surveyedArea : {
+        type : String,
+    },
+    map1link : {
+        type : String,
+    },
+    map2link : {
+        type : String,
+    },
+    surveydate2 : {
+        type : String,
+    },
+    surveydate1 : {
+        type : String,
+    },
+    cellphoneAccess : {
         type : String,
     },
     website : {
