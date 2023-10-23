@@ -9,7 +9,34 @@ const FarmerSchema = mongoose.Schema({
     parentAccount : {
         type : String,
     },
+    feildId : {
+        type : String,
+    },
     phone : {
+        type : String,
+    },
+    lat : {
+        type : String,
+    },
+    long : {
+        type : String,
+    },
+    surveyedArea : {
+        type : String,
+    },
+    map1link : {
+        type : String,
+    },
+    map2link : {
+        type : String,
+    },
+    surveydate2 : {
+        type : String,
+    },
+    surveydate1 : {
+        type : String,
+    },
+    cellphoneAccess : {
         type : String,
     },
     website : {
@@ -18,7 +45,7 @@ const FarmerSchema = mongoose.Schema({
     source : {
         type : String,
     }, 
-    numberOfLastYearCrops : {
+    cropsGrown : {
         type : String,
     }, 
     tehsil : {
@@ -45,7 +72,7 @@ const FarmerSchema = mongoose.Schema({
     billingState : {
         type : String
     },
-    billingZip : {
+    billingZipCode : {
         type : String,
     },
     billingCountry : {
@@ -61,6 +88,9 @@ const FarmerSchema = mongoose.Schema({
         type : String,
     },
     shippingCountry : {
+        type : String,
+    },
+    shippingZipCode : {
         type : String,
     },
     majorBuyer : {
@@ -81,7 +111,7 @@ const FarmerSchema = mongoose.Schema({
     annualIncome : {
         type : String
     },
-    scannedAadhar : {
+    aadhaarNumber : {
         type : String
     },
     bankName : {

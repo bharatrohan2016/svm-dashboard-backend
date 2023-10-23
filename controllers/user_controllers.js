@@ -26,18 +26,21 @@ module.exports.signUp = async (req, res) => {
 module.exports.signIn = async (req, res) => {
     console.log(req.body);
     try {
-        let user = await User.findOne({email:req.body.email})
+        
+        let user = await User.findOne({email:req.body.email});
         if (user) {
             let isMatch = await bcrypt.compare(req.body.password, user.password);
-            if (isMatch) {
-                return res.status(200).json({
+            if (isMatch!=null) {
+                 res.status(200).json({
                     id: user._id,
                     user: 'user',
                     token: generateToken(user._id)
                 })
             }else{
-                return res.status(401).json('Invalid Login')
+                 res.status(401).json('Invalid Login');
             }
+        }else{
+            res.status(401).json('Invalid Login');
         }
     } catch (error) {
         res.status(500).json('Error ', error.message);

@@ -50,8 +50,8 @@ router.post('/farmer-csv', upload.single('csv'), async (req, res) => {
             //insert the cleaned object in the database.
             const entry = await create(insertedItem);
         }
-
-        res.send({result : "success"});
+        const data = await findAll();
+        res.send({result : "success", data});
     }catch(e){
         console.log(e);
     }
@@ -72,22 +72,8 @@ router.get('/farmer', async(req, res) => {
 
 router.post('/filter-farmers', async(req, res) => {
     try{
-        const { village, source, crops } = req.body;
-        let query = {};
-
-        if(village) {
-            query['village'] = village;
-        }
-
+        let query = req.body;
         let data = await findAll(query);
-
-        //crops are string data type. Need to filter after fetching.
-        if(crops){
-             data = data.filter((item) => item.crops?.toLowerCase().includes(crops) === true);
-        }
-
-        data.sort();
-        
         res.send({
             result : "success", data
         })
