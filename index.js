@@ -1,5 +1,5 @@
 const express = require('express')
-const PORT = 3000;
+const PORT = 3200 | process.env.PORT;
 const app = express()
 const cors = require('cors')
 const db = require('./config/database')

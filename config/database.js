@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const conn_url = 'mongodb://0.0.0.0:27017/svw-dashboard'
+const conn_url = 'mongodb+srv://admin:admin@cluster0.ysw9m39.mongodb.net/?retryWrites=true&w=majority'
 
 const db = mongoose.connect(
     conn_url,
