@@ -3,7 +3,7 @@ const mapSchema = mongoose.Schema({
     excel_id: {
         type: String,
     },
-    excel_id_2: {
+    feild_number: {
         type: String,
     },
     area: {
@@ -22,9 +22,6 @@ const mapSchema = mongoose.Schema({
         type: String
     },
     village: {
-        type: String
-    },
-    contact: {
         type: String
     }
 })
