@@ -5,7 +5,7 @@ const totalItems = async(req, res) => {
         const farmers = await farmer.find();
         const totalFarmer = farmers.length
         if (farmers.length === 0) {
-            res.status(200).json('No farmer')
+            return res.status(200).json('No farmer');
         }
 
         let mostRecentDate = farmers[0].createdAt;

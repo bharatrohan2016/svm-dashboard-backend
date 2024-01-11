@@ -9,7 +9,13 @@ const FarmerSchema = mongoose.Schema({
     parentAccount : {
         type : String,
     },
+    feildNumber : {
+        type : String,
+    },
     feildId : {
+        type : String,
+    },
+    area : {
         type : String,
     },
     phone : {
@@ -106,7 +112,7 @@ const FarmerSchema = mongoose.Schema({
         type : String,
     },
     cattles : {
-        type : Array
+        type : String
     },
     annualIncome : {
         type : String
@@ -122,9 +128,6 @@ const FarmerSchema = mongoose.Schema({
     },
     accountNumber : {
         type : String
-    },
-    cropsArray : {
-        type : Array
     }
 },{
     timestamps: true

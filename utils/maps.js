@@ -1,9 +1,12 @@
 const farmerMap = {
+
     "name" : "name",
     "father's name" : "fathersName", 
     "parent account" : "parentAccount",
-    "feild id" : "feildId",
-    "phone" : "phone",
+    "field number" : "feildNumber",
+    "field id" : "feildId",
+    "area" : "area",
+    "contact" : "phone",
     "long" : "long",
     "lat" : "lat",
     "surveyed Area" : "surveyedArea",
@@ -44,14 +47,13 @@ const farmerMap = {
 }
 
 const mapmap = {
-    "Field ID - Final": "excel_id",
-    "Field ID - Survey 2": "excel_id_2",
+    "Field ID": "excel_id",
+    "Field Number": "feild_number",
     "Area": "area",
     "goemetry": "geometry",
-    "long": "long",
-    "lat": "lat",
-    "Farmer name": "farmer_name",
-    "Contact": "contact",
+    "longitude": "long",
+    "latitude": "lat",
+    "farmer_name": "farmer_name",
     "Village": "village"
 }
 
