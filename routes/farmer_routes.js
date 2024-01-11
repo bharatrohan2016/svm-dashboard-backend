@@ -39,6 +39,7 @@ router.post('/farmer-csv', upload.single('csv'), async (req, res) => {
             for(let key in jsonItem){
                 //remove the spaces and make lowercase for map purpose.
                 let cleanedKey = key.trim().toLowerCase();
+                console.log(cleanedKey);
                 
                 //remove the trailing spaces in values.
                 jsonItem[key] = jsonItem[key]?.trim();
@@ -47,8 +48,12 @@ router.post('/farmer-csv', upload.single('csv'), async (req, res) => {
                 insertedItem[farmerMap[cleanedKey]] = jsonItem[key] !="" ? jsonItem[key] : "-";
             }
             
-            //insert the cleaned object in the database.
-            const entry = await create(insertedItem);
+            const { name, fathersName, tehsil, village, block} = insertedItem;
+            const entries = await findAll({ name, fathersName, tehsil, village, block});
+            if(entries.length===0){
+                //insert the cleaned object in the database.
+                const entry = await create(insertedItem);
+            }
         }
         const data = await findAll();
         res.send({result : "success", data});
@@ -60,6 +65,7 @@ router.post('/farmer-csv', upload.single('csv'), async (req, res) => {
 router.get('/farmer', async(req, res) => {
     try{
         const data = await findAll();
+
         res.send({
             result : "success", data
         })
@@ -86,6 +92,8 @@ router.post('/filter-farmers', async(req, res) => {
 router.get('/farmer/:id', async(req, res) => {
     try{
         const data = await findById(req.params.id);
+        
+
         res.send({
             result : "success",
             data
