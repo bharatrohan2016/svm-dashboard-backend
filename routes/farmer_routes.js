@@ -63,6 +63,7 @@ router.post('/farmer-csv', upload.single('csv'), async (req, res) => {
 })
 
 router.get('/farmer', async(req, res) => {
+   
     try{
         const data = await findAll();
 

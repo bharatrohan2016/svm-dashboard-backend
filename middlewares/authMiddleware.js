@@ -4,10 +4,13 @@ const asyncHandler = require('express-async-handler')
 
 const protect = asyncHandler(async (req, res, next) => {
     let token
+    console.log("hit");
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         try {
             token = req.headers.authorization.split(' ')[1]
-            const verified = jwt.verify(token, 'proccess.env.SECRET_KEY');
+            console.log(token);
+            const verified = jwt.verify(token, process.env.SECRET_KEY);
+            console.log(verified);
             req.user = verified
             next()
         } catch (error) {

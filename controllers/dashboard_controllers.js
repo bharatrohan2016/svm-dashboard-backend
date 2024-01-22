@@ -27,7 +27,7 @@ const totalItems = async(req, res) => {
             const area = parseFloat(farmer.totalAreaUnderCultivation);
             totalArea += isNaN(area) ? 0 : area;
         }
-
+        console.log({totalFarmer, dateSurvey ,totalArea});
         res.status(200).json({totalFarmer, dateSurvey ,totalArea})
     } catch (error) {
         console.log(error);

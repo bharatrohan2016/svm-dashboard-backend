@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-// const conn_url = Your Mongodb URI
+// const conn_url = 'mongodb+srv://admin:admin@cluster0.ysw9m39.mongodb.net/test?retryWrites=true&w=majority'
+const conn_url = 'mongodb+srv://admin:admin@cluster0.ysw9m39.mongodb.net/?retryWrites=true&w=majority';
 
 const db = mongoose.connect(
     conn_url,
