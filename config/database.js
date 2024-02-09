@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-// const conn_url = 'mongodb+srv://admin:admin@cluster0.ysw9m39.mongodb.net/test?retryWrites=true&w=majority'
-const conn_url = 'mongodb+srv://admin:admin@cluster0.ysw9m39.mongodb.net/?retryWrites=true&w=majority';
+const conn_url = process.env.MONGOOSE_URI;
 
 const db = mongoose.connect(
     conn_url,
