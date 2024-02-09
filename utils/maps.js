@@ -1,12 +1,11 @@
 const farmerMap = {
-
     "name" : "name",
     "father's name" : "fathersName", 
     "parent account" : "parentAccount",
     "field number" : "feildNumber",
     "field id" : "feildId",
     "area" : "area",
-    "contact" : "phone",
+    "phone" : "phone",
     "long" : "long",
     "lat" : "lat",
     "surveyed Area" : "surveyedArea",

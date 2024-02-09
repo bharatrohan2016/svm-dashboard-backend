@@ -2,6 +2,7 @@ const farmer = require("../models/farmer")
 
 const totalItems = async(req, res) => {
     try {
+        console.log("hit-ti");
         const farmers = await farmer.find();
         const totalFarmer = farmers.length
         if (farmers.length === 0) {
