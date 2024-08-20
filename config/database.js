@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const importCSVToMongoDB = require('../utils/csvTojson'); 
 const path = require('path')
 
-const conn_url = process.env.MONGOOSE_URI;
+const conn_url = process.env.MONGOOSE_LOCAL;
 
 // const filepath = path.join(__dirname, '..', 'public', 'test.csv')
 // console.log(filepath);

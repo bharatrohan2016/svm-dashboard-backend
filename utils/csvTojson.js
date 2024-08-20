@@ -9,20 +9,7 @@ async function importCSVToMongoDB(csvFilePath) {
         .pipe(csv())
         .on('data', async (row) => {
           try {
-            // Create or find the crop
-            const cropData = {
-              cropName: row['Crop'].trim(),
-              variety: row['Variety'].trim(),
-              year: parseInt(row['Year'].trim()),
-              season: 'Other',  // Default value, adjust as needed
-              ownedLand: parseFloat(row['Acreage'].trim()),
-              leasedLand: 0,  // Adjust this if you have leased land data
-              yieldPerAcre: 0,  // Default, update if available
-            };
-  
-            const crop = await Crop.findOneAndUpdate(cropData, cropData, { upsert: true, new: true });
-  
-            // Prepare farmer data
+
             const farmerData = {
               farmerName: row['Farmer Name'].trim(),
               fatherName: row['Father Name'].trim(),
@@ -36,15 +23,29 @@ async function importCSVToMongoDB(csvFilePath) {
               state: row['State'].trim(),
               postalCode: row['Postal Code'].trim(),
             };
-  
-            // Find and update the farmer, or create a new one if it doesn't exist
-            const updatedFarmer = await Farmer2024.findOneAndUpdate(
-              { phoneNumber: farmerData.phoneNumber }, 
-              { $set: farmerData, $addToSet: { crops: crop._id } }, 
-              { upsert: true, new: true }
-            );
-  
-            console.log(`Processed farmer: ${farmerData.farmerName}`);
+
+            const findFarmer = await Farmer2024.findOne({phoneNumber: farmerData.phoneNumber})
+
+            if (!findFarmer) {
+              var createFarmer = await Farmer2024.create(farmerData)
+            }
+
+            const cropData = {
+              cropName: row['Crop'].trim(),
+              variety: row['Variety'].trim(),
+              year: parseInt(row['Year'].trim()),
+              season: 'Other',  // Default value, adjust as needed
+              ownedLand: parseFloat(row['Acreage'].trim()),
+              leasedLand: 0,  // Adjust this if you have leased land data
+              yieldPerAcre: 0,  
+              cropassurefarmer: createFarmer._id
+            };
+
+            const createCrop = await Crop.create(cropData)
+
+            createFarmer.crops.push(createCrop._id)
+            await createFarmer.save();
+
           } catch (error) {
             console.error('Error processing row:', error.message);
           }

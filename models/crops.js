@@ -51,6 +51,10 @@ const CropSchema = new mongoose.Schema({
     type: Number,
     required: true,
     min: [0, 'Yield per acre cannot be negative'],  // Yield in some unit (e.g., quintals per acre)
+  },
+  cropassurefarmer : {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Farmer2024'
   }
 }, {
   timestamps: true  // Automatically adds createdAt and updatedAt fields
