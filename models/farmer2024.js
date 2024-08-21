@@ -49,7 +49,22 @@ const Farmer2024Schema = new mongoose.Schema({
   crops: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Crop'
-  }]
+  }],
+  feild_number: {
+    type: String,
+  },
+  area: {
+      type: String,
+  },
+  geometry: {
+      type: String
+  },
+  long: {
+      type: Number,
+  },
+  lat: {
+      type: Number,
+  }
 }, {
   timestamps: true  // Automatically adds createdAt and updatedAt fields
 });
