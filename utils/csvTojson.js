@@ -24,7 +24,7 @@ async function importCSVToMongoDB(csvFilePath) {
               postalCode: row['Postal Code'].trim(),
               lat: row['Lat'].trim(),
               long: row['Lng'].trim(),
-              field_number: row['Field No'].trim(),
+              feild_number: row['Field No'].trim(),
               area: row['Area'].trim(),
             };
 
