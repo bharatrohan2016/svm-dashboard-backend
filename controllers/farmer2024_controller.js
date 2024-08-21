@@ -62,9 +62,9 @@ module.exports.totalItems = async(req, res) => {
 
 module.exports.getOneFarmer = async(req, res) => {
     try{
-        const data = await farmer2024.findById(req.params.id);
-        
-
+        console.log("hit")
+        const data = await farmer2024.findOne({_id : req.params.id}).populate('crops');
+        console.log(data);
         res.send({
             result : "success",
             data
