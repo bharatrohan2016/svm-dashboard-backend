@@ -22,6 +22,10 @@ async function importCSVToMongoDB(csvFilePath) {
               district: row['District'].trim(),
               state: row['State'].trim(),
               postalCode: row['Postal Code'].trim(),
+              lat: row['Lat'].trim(),
+              long: row['Lng'].trim(),
+              field_number: row['Field No'].trim(),
+              area: row['Area'].trim(),
             };
 
             const findFarmer = await Farmer2024.findOne({phoneNumber: farmerData.phoneNumber})
