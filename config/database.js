@@ -16,7 +16,7 @@ const db = mongoose.connect(
         useUnifiedTopology: true
     }
 ).then(() => {
-    importCSVToMongoDB(filepath)
+    // importCSVToMongoDB(filepath)
     console.log('Connected');
     
 })
