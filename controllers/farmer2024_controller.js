@@ -10,20 +10,20 @@ module.exports.findFarmer = async (req, res) => {
     }
 }
 
-module.exports.filterFarmer = async(req, res) => {
-    try{
+module.exports.filterFarmer = async (req, res) => {
+    try {
         let query = req.body;
         let data = await findAll(query);
         res.send({
-            result : "success", data
+            result: "success", data
         })
     }
-    catch(e){
+    catch (e) {
         console.log(e);
     }
 }
 
-module.exports.totalItems = async(req, res) => {
+module.exports.totalItems = async (req, res) => {
     try {
         console.log("hit-ti");
         const farmers = await farmer2024.find();
@@ -51,8 +51,8 @@ module.exports.totalItems = async(req, res) => {
             const area = parseFloat(farmer.totalAreaUnderCultivation);
             totalArea += isNaN(area) ? 0 : area;
         }
-        console.log({totalFarmer, dateSurvey ,totalArea});
-        res.status(200).json({totalFarmer, dateSurvey ,totalArea})
+        console.log({ totalFarmer, dateSurvey, totalArea });
+        res.status(200).json({ totalFarmer, dateSurvey, totalArea })
     } catch (error) {
         console.log(error);
         res.status(404).json('Error while fetching')
@@ -60,16 +60,36 @@ module.exports.totalItems = async(req, res) => {
 }
 
 
-module.exports.getOneFarmer = async(req, res) => {
-    try{
+module.exports.getOneFarmer = async (req, res) => {
+    try {
         console.log("hit")
-        const data = await farmer2024.findOne({_id : req.params.id}).populate('crops');
+        const data = await farmer2024.findOne({ _id: req.params.id }).populate('crops');
         console.log(data);
         res.send({
-            result : "success",
+            result: "success",
             data
         })
-    }catch(e){
+    } catch (e) {
         console.log(e);
+    }
+}
+
+module.exports.cropwiseFarmernumber = async (req, res) => {
+    try {
+        const results = await Crop.aggregate([
+            {
+                $group: {
+                    _id: "$cropName",  // Group by cropName
+                    count: { $sum: 1 }  // Count the number of documents in each group
+                }
+            },
+            {
+                $sort: { count: -1 }  // Sort by count in descending order (optional)
+            }
+        ]);
+
+        console.log(results);
+    } catch (err) {
+        console.error('Error fetching crop counts:', err);
     }
 }
