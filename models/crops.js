@@ -55,6 +55,9 @@ const CropSchema = new mongoose.Schema({
   cropassurefarmer : {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Farmer2024'
+  },
+  majorbuyer: {
+    type: String
   }
 }, {
   timestamps: true  // Automatically adds createdAt and updatedAt fields

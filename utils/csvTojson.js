@@ -38,6 +38,7 @@ async function importCSVToMongoDB(csvFilePath) {
               cropName: row['Crop'].trim(),
               variety: row['Variety'].trim(),
               year: parseInt(row['Year'].trim()),
+              majorbuyer: row['Major Buyer'].trim(),
               season: 'Other',  // Default value, adjust as needed
               ownedLand: parseFloat(row['Acreage'].trim()),
               leasedLand: 0,  // Adjust this if you have leased land data
