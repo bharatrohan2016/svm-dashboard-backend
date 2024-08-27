@@ -6,6 +6,14 @@ const CropSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  farmerName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  excel_id: {
+    type: String
+  },
   variety: {
     type: String,
     trim: true

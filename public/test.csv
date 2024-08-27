@@ -1,7 +1,7 @@
-Farmer Name,Father Name,Phone Number,Gender,Date of Birth,ID,Village,Block,District,State,Postal Code,Crop,Acreage,Variety,Major Buyer,Crop Assure Farmer,Year,Lat,Lng,Field No,Area
-John Doe,Richard Doe,1234567890,Male,1985-05-15,A123456789,Green Village,North Block,Green District,Green State,123456,Wheat,10,HD2967,ABC Grains,Yes,2023,28.459497,77.026638,12,20
-Jane Smith,Michael Smith,987654321,Female,1990-08-21,B987654321,Blue Village,South Block,Blue District,Blue State,654321,Rice,15,IR36,XYZ Rice Mills,No,2023,28.408912,77.317789,13,21
-Robert Brown,David Brown,1122334455,Male,1978-02-10,C112233445,Yellow Village,East Block,Yellow District,Yellow State,789123,Maize,20,Golden,Maize Corp,Yes,2022,29.390946,76.963502,14,23
-Emily Davis,James Davis,2233445566,Female,1989-11-30,D223344556,Red Village,West Block,Red District,Red State,321654,Soybean,12,JS335,Kerry Traders,No,2023,29.685692,76.990482,15,34
-William Johnson,Henry Johnson,3344556677,Male,1982-07-25,E334455667,Purple Village,Central Block,Purple District,Purple State,987654,Cotton,18,BT123,AgroWorld,Yes,2022,29.149187,75.721652,16,44
-Sarah Miller,Charles Miller,4455667788,Female,1993-04-12,F445566778,Orange Village,North East Block,Orange District,Orange State,456789,Sugarcane,25,CO238,Green Farm,No,2023,28.895515,76.606612,17,45
+Farmer Name,ID,Phone Number,Gender,Date of Birth,Village,Block,District,State,Postal Code,Area,Lng,Lat
+John Doe,EX12345,9876543210,Male,1985-05-15,Green Village,North Block,Green District,Green State,123456,5 acres,85.324,27.7172
+Jane Smith,EX67890,9876543211,Female,1990-08-21,Blue Village,South Block,Blue District,Blue State,654321,10 acres,85.324,27.7173
+Robert Brown,EX13579,9876543212,Male,1978-02-10,Yellow Village,East Block,Yellow District,Yellow State,789123,7 acres,85.324,27.7174
+Emily Davis,EX24680,9876543213,Female,1989-11-30,Red Village,West Block,Red District,Red State,321654,8 acres,85.324,27.7175
+William Johnson,EX11223,9876543214,Male,1982-07-25,Purple Village,Central Block,Purple District,Purple State,987654,6 acres,85.324,27.7176
+Sarah Miller,EX99876,9876543215,Female,1993-04-12,Orange Village,North East Block,Orange District,Orange State,456789,9 acres,85.324,27.7177

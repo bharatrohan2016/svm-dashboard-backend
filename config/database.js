@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-const importCSVToMongoDB = require('../utils/csvTojson'); 
+const { importFarmerCSVToMongoDB, importCropCSVToMongoDB, importSurveyCSVToMongoDB } = require('../utils/csvTojson'); 
 const path = require('path')
 
-const conn_url = process.env.MONGOOSE_URI;
+const conn_url = process.env.MONGOOSE_LOCAL;
 
-const filepath = path.join(__dirname, '..', 'public', 'test.csv')
-console.log(filepath);
+const filepath = path.join(__dirname, '..', 'public', 'farmerdetails.csv')
+const cropFilePath = path.join(__dirname, '..', 'public', 'crop.csv')
+const surveyFilePath = path.join(__dirname, '..', 'public', 'survey.csv')
 
 
 
@@ -16,7 +17,9 @@ const db = mongoose.connect(
         useUnifiedTopology: true
     }
 ).then(() => {
-    // importCSVToMongoDB(filepath)
+    importFarmerCSVToMongoDB(filepath)
+    // importCropCSVToMongoDB(cropFilePath)
+    // importSurveyCSVToMongoDB(surveyFilePath)
     console.log('Connected');
     
 })

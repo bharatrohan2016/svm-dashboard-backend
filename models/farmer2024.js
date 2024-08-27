@@ -6,26 +6,25 @@ const Farmer2024Schema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  fatherName: {
-    type: String,
-    required: true,
-    trim: true
-  },
+  // fatherName: {
+  //   type: String,
+  //   required: true,
+  //   trim: true
+  // },
   phoneNumber: {
     type: String,
-    required: true,
-    unique: true
+    required: false,
   },
   gender: {
     type: String,
-    enum: ['Male', 'Female', 'Other'],
-    required: true
+    required: false
   },
   dateOfBirth: {
     type: Date,
   },
-  id: {
-    type: String
+  excel_id: {
+    type: String,
+    unique: true
   },
   village: {
     type: String,
@@ -56,15 +55,21 @@ const Farmer2024Schema = new mongoose.Schema({
   area: {
       type: String,
   },
-  geometry: {
-      type: String
-  },
+  // geometry: {
+  //     type: String
+  // },
   long: {
       type: Number,
   },
   lat: {
       type: Number,
-  }
+  },
+  survey: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Survey'
+    }
+  ]
 }, {
   timestamps: true  // Automatically adds createdAt and updatedAt fields
 });

@@ -1,0 +1,7 @@
+Crop,Farmer Name,ID,Variety,Year,Other,Acreage,leasedLand,dateOfSowing,dateOfHarvest,fertilizersApplied,pesticidesApplied,yieldPerAcre,Major Buyer
+Wheat,John Doe,EX12345,HD2967,2023,Rabi,5,0,2023-11-01,2024-03-01,"Urea,DAP","Insecticide",20,ABC Grains
+Rice,Jane Smith,EX67890,IR36,2023,Kharif,7,3,2023-06-15,2023-10-20,"Urea,NPK","Herbicide",18,XYZ Rice Mills
+Maize,Robert Brown,EX13579,Golden,2022,Zaid,4,3,2022-03-10,2022-07-15,"NPK","Insecticide",25,Maize Corp
+Cotton,Emily Davis,EX24680,BT123,2023,Kharif,6,2,2023-05-01,2023-09-30,"DAP,Urea","Fungicide",30,AgroWorld
+Soybean,William Johnson,EX11223,JS335,2023,Rabi,6,0,2023-10-01,2024-02-28,"Compost,Fungicide","Insecticide",22,Kerry Traders
+Sugarcane,Sarah Miller,EX99876,CO238,2023,Other,9,0,2023-01-10,2024-12-20,"Urea","Herbicide",40,Green Farm
