@@ -1,4 +1,5 @@
 const farmer2024 = require('../models/farmer2024')
+const Crop=require('../models/crops')
 
 module.exports.findFarmer = async (req, res) => {
     try {
@@ -87,8 +88,10 @@ module.exports.cropwiseFarmernumber = async (req, res) => {
                 $sort: { count: -1 }  // Sort by count in descending order (optional)
             }
         ]);
-
-        console.log(results);
+        const gingerCount=results.filter(obj=>obj._id.toLowerCase()=='ginger');
+        const paddyCount=results.filter(obj=>obj._id.toLowerCase()=='paddy');
+        const cropCount={ginger:gingerCount[0].count,paddy:paddyCount[0].count};
+        res.send(cropCount);
     } catch (err) {
         console.error('Error fetching crop counts:', err);
     }
