@@ -31,8 +31,8 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
           try {
             const generateId = async () => {
               const { farmerName, village } = farmerData;
-              const villagePart = village[0] + village[1].toUpperCase();
-              const farmerNamePart = farmerName[0] + farmerName[1].toUpperCase();
+              const villagePart = village[0].toUpperCase() + village[1].toUpperCase();
+              const farmerNamePart = farmerName[0].toUpperCase() + farmerName[1].toUpperCase();
 
               let uniqueId = 'MLRIBH' + villagePart + farmerNamePart;
               const regex = new RegExp(uniqueId, 'i'); // 'i' for case-insensitive search
