@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { importFarmerCSVToMongoDB, importCropCSVToMongoDB, importSurveyCSVToMongoDB } = require('../utils/csvTojson'); 
 const path = require('path')
 
-const conn_url = process.env.MONGOOSE_LOCAL;
+const conn_url = process.env.MONGOOSE_URI;
 
 const filepath = path.join(__dirname, '..', 'public', 'farmerdetails.csv')
 const cropFilePath = path.join(__dirname, '..', 'public', 'crop.csv')

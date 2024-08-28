@@ -50,13 +50,13 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
             farmerData.excel_id = await generateId();
 
             const findFarmer = await Farmer2024.findOne({
-              excel_id: farmerData.excel_id,
-              farmerName: farmerData.farmerName
+              farmerName: farmerData.farmerName,
+              excel_id: farmerData.excel_id
             });
 
             if (!findFarmer) {
               await Farmer2024.create(farmerData);
-            }
+            } 
           } catch (error) {
             console.error('Error processing row:', error.message);
           }
