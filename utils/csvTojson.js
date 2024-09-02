@@ -38,6 +38,14 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
               const regex = new RegExp(uniqueId, 'i'); // 'i' for case-insensitive search
               const doesExist = await Farmer2024.find({ excel_id: { $regex: regex } });
 
+              //checking in array that a farmer with same name should not be present
+              if(doesExist.length>0){
+                var farmerExistFlag=doesExist.filter((farmer)=>{if(farmer.farmerName == farmerName) return farmer});
+                if(farmerExistFlag.length){
+                  return farmerExistFlag[0]?.excel_id;
+                }
+              }
+
               if (doesExist.length > 0) {
                 uniqueId += doesExist.length < 10 ? `0${doesExist.length}` : `${doesExist.length}`;
               } else {
@@ -48,6 +56,8 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
             };
 
             farmerData.excel_id = await generateId();
+
+            // If we get excel_id then search for Farmer by the excel_id and if we get a farmer then don't create a new farmer
 
             const findFarmer = await Farmer2024.findOne({
               excel_id: farmerData.excel_id,
@@ -70,7 +80,6 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
       });
   });
 }
-
 
 async function importCropCSVToMongoDB(csvFilePath) {
   return new Promise((resolve, reject) => {
