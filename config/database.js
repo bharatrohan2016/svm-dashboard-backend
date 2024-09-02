@@ -3,6 +3,7 @@ const { importFarmerCSVToMongoDB, importCropCSVToMongoDB, importSurveyCSVToMongo
 const path = require('path')
 
 const conn_url = process.env.MONGOOSE_URI;
+// const conn_url = process.env.MONGOOSE_LOCAL;
 
 const filepath = path.join(__dirname, '..', 'public', 'farmerdetails.csv')
 const cropFilePath = path.join(__dirname, '..', 'public', 'crop.csv')
@@ -17,7 +18,7 @@ const db = mongoose.connect(
         useUnifiedTopology: true
     }
 ).then(() => {
-    importFarmerCSVToMongoDB(filepath)
+    // importFarmerCSVToMongoDB(filepath)
     // importCropCSVToMongoDB(cropFilePath)
     // importSurveyCSVToMongoDB(surveyFilePath)
     console.log('Connected');

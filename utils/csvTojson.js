@@ -29,10 +29,25 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
       .on('end', async () => {
         for (const farmerData of farmers) {
           try {
+            // First, check if a farmer with the same identifying details already exists
+            const existingFarmer = await Farmer2024.findOne({
+              farmerName: farmerData.farmerName,
+              // phoneNumber: farmerData.phoneNumber,
+              // village: farmerData.village,
+              // block: farmerData.block,
+              // district: farmerData.district,
+              // state: farmerData.state
+            });
+
+            if (existingFarmer) {
+              console.log(`Farmer ${farmerData.farmerName} already exists. Skipping insertion.`);
+              continue; // Skip this farmer if already exists
+            }
+
             const generateId = async () => {
               const { farmerName, village } = farmerData;
-              const villagePart = village[0].toUpperCase() + village[1].toUpperCase();
-              const farmerNamePart = farmerName[0].toUpperCase() + farmerName[1].toUpperCase();
+              const villagePart = village[0] + village[1].toUpperCase();
+              const farmerNamePart = farmerName[0] + farmerName[1].toUpperCase();
 
               let uniqueId = 'MLRIBH' + villagePart + farmerNamePart;
               const regex = new RegExp(uniqueId, 'i'); // 'i' for case-insensitive search
@@ -49,14 +64,8 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
 
             farmerData.excel_id = await generateId();
 
-            const findFarmer = await Farmer2024.findOne({
-              farmerName: farmerData.farmerName,
-              excel_id: farmerData.excel_id
-            });
-
-            if (!findFarmer) {
-              await Farmer2024.create(farmerData);
-            } 
+            // If farmer was not found, create a new record
+            await Farmer2024.create(farmerData);
           } catch (error) {
             console.error('Error processing row:', error.message);
           }
@@ -70,6 +79,8 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
       });
   });
 }
+
+
 
 
 async function importCropCSVToMongoDB(csvFilePath) {
