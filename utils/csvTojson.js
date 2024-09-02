@@ -29,6 +29,21 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
       .on('end', async () => {
         for (const farmerData of farmers) {
           try {
+            // First, check if a farmer with the same identifying details already exists
+            const existingFarmer = await Farmer2024.findOne({
+              farmerName: farmerData.farmerName,
+              // phoneNumber: farmerData.phoneNumber,
+              // village: farmerData.village,
+              // block: farmerData.block,
+              // district: farmerData.district,
+              // state: farmerData.state
+            });
+
+            if (existingFarmer) {
+              console.log(`Farmer ${farmerData.farmerName} already exists. Skipping insertion.`);
+              continue; // Skip this farmer if already exists
+            }
+
             const generateId = async () => {
               const { farmerName, village } = farmerData;
               const villagePart = village[0] + village[1].toUpperCase();
@@ -57,16 +72,8 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
 
             farmerData.excel_id = await generateId();
 
-            // If we get excel_id then search for Farmer by the excel_id and if we get a farmer then don't create a new farmer
-
-            const findFarmer = await Farmer2024.findOne({
-              excel_id: farmerData.excel_id,
-              farmerName: farmerData.farmerName
-            });
-
-            if (!findFarmer) {
-              await Farmer2024.create(farmerData);
-            }
+            // If farmer was not found, create a new record
+            await Farmer2024.create(farmerData);
           } catch (error) {
             console.error('Error processing row:', error.message);
           }
@@ -80,6 +87,9 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
       });
   });
 }
+
+
+
 
 async function importCropCSVToMongoDB(csvFilePath) {
   return new Promise((resolve, reject) => {
