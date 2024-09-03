@@ -66,6 +66,9 @@ const CropSchema = new mongoose.Schema({
   },
   majorbuyer: {
     type: String
+  },
+  crop_village : {
+    type: String
   }
 }, {
   timestamps: true  // Automatically adds createdAt and updatedAt fields

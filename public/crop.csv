@@ -1,7 +1,199 @@
-Crop,Farmer Name,ID,Variety,Year,Other,Acreage,leasedLand,dateOfSowing,dateOfHarvest,fertilizersApplied,pesticidesApplied,yieldPerAcre,Major Buyer
-Wheat,John Doe,EX12345,HD2967,2023,Rabi,5,0,2023-11-01,2024-03-01,"Urea,DAP","Insecticide",20,ABC Grains
-Rice,Jane Smith,EX67890,IR36,2023,Kharif,7,3,2023-06-15,2023-10-20,"Urea,NPK","Herbicide",18,XYZ Rice Mills
-Maize,Robert Brown,EX13579,Golden,2022,Zaid,4,3,2022-03-10,2022-07-15,"NPK","Insecticide",25,Maize Corp
-Cotton,Emily Davis,EX24680,BT123,2023,Kharif,6,2,2023-05-01,2023-09-30,"DAP,Urea","Fungicide",30,AgroWorld
-Soybean,William Johnson,EX11223,JS335,2023,Rabi,6,0,2023-10-01,2024-02-28,"Compost,Fungicide","Insecticide",22,Kerry Traders
-Sugarcane,Sarah Miller,EX99876,CO238,2023,Other,9,0,2023-01-10,2024-12-20,"Urea","Herbicide",40,Green Farm
+ID,Farmer Name,Crop,Variety,Year,Major Buyer,Acerage,Crop Village
+MLRIBHLIAI00,Aibor Maklai,Paddy,,2024,,,Liarbang
+MLRIBHLIAI01,Aibor Rymbai,Paddy,,2024,,,Liarkhla
+MLRIBHKYAI00,Aida Pyngrope,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIAI02,Ailinda Mawlong,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLIAI03,Airidalin Marbaniang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLIAI04,Aisidora Wahlang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLIAN00,Anjelina Sujai,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHSOAN00,Anthony Bey,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLIAN01,Anthony Nongrum,Paddy,Phrang,2024,,,Liarbang
+MLRIBHLIAN02,Anthony Nongsiej,Paddy,,2024,,,Liarbang
+MLRIBHKYAR00,Artilari Mawnguh,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIBA00,Babiangbok Kurbah,Paddy,,2024,,,Liarkhla
+MLRIBHLIBA01,Bachelor Maklai,Paddy,,2024,,,Liarbang
+MLRIBHLIBA02,Bah umsohlang,Paddy,,2024,,,Liarkhla
+MLRIBHLIBA03,Baialamshwa Warjri,Paddy,"Kba heh, pnah latara",2024,,,Liarkhla
+MLRIBHLIBA04,Baiamon Lyndoh,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHKYBA01,Ban Maring,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHKHBA00,Banker Ronghang,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHMABA01,Bateimon Pariong,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLIBA05,Battina Wahlang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHKHBE00,Bestina Marak,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHLIBE00,Betimon Lynshiang,Paddy,Mynri,2024,,,Liarbang
+MLRIBHLIBI00,Bing Teron,Paddy,,2024,,,Liarbang
+MLRIBHLIBI01,Biut Wahlang,Paddy,,2024,,,Liarkhla
+MLRIBHLIBL00,Bling Mawlong,Paddy,,2024,,,Liarbang
+MLRIBHSOBO00,Boni Warjri,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLIBO01,Borda Nongbri,Paddy,jwain,2024,,,Liarkhla
+MLRIBHLIBR00,Brilanshon Kshiar,Paddy,"Kba jrong ,Pnah",2024,,,Liarbang
+MLRIBHLIBR01,Brimtina Lynshiang,Paddy,Phrang,2024,,,Liarbang
+MLRIBHLIBU00,Bun Sumer,Paddy,,2024,,,Liarkhla
+MLRIBHMABU00,But Marwein,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLICH00,Chaphrang Ramde,Paddy,,2024,,,Liarkhla
+MLRIBHLICH01,Chian Maklai,Paddy,,2024,,,Liarbang
+MLRIBHLICH02,Chondro DEka 1,Paddy,,2024,,,Liarbang
+MLRIBHLICL00,Cladis Marwein,Paddy,,2024,,,Liarbang
+MLRIBHLICO00,Conferen Mukhim,Paddy,"Jwain ,MYnri",2024,,,Liarkhla
+MLRIBHKYDA01,Daphilarisha Masharing,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIDA00,Daplin Rymbai,Paddy,"Mynri, Pnah Latara",2024,,,Liarkhla
+MLRIBHKYDA02,Daplin Tamu,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIDA01,Dapynsngew Tado,Paddy,"Mynri ,Kba heh ,",2024,,,Liarkhla
+MLRIBHUMDA00,Darik Masharing,Ginger,Local,2024,Bhoirymbong Market,,Umraling
+MLRIBHKYDA03,Darisha Tamu,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHKHDA00,Darsing Tamu,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHLIDE00,Destina Mawlong,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHMADI00,Diamon Kharsyntiew,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHMADI01,Diang Suting,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLIDO00,Doi Rymbai,Paddy,,2024,,,Liarbang
+MLRIBHKHDR00,Dremlem Suting,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHLIDR01,Driat Mawlong,Paddy,,2024,,,Liarkhla
+MLRIBHSODR00,Droni Teron,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHKYED00,Edlin Masharing,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHKHEN00,Entisha Teron,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHLIFL00,Flower Lamare,Paddy,Lakang,2024,,,Liarbang
+MLRIBHLIFR00,Francis marbaniang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLIHA00,Harten Nongbri,Paddy,Jwain,2024,,,Liarkhla
+MLRIBHLIHE00,Hering Rymbai,Paddy,,2024,,,Liarbang
+MLRIBHLIHI00,Hilarius Mawlong,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHKHHO00,Horles Khynriam,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHLIIA00,Ia Suting,Paddy,,2024,,,Liarkhla
+MLRIBHKHIA00,Iainehskhem Teron,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHKHIA01,Iaishah Mujai,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHKYIB01,Ibapynhun Shadap,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIIE00,Ieidlarity Ramde,Paddy,,2024,,,Liarkhla
+MLRIBHUMIO00,Iohei Masharing,Ginger,Local,2024,Bhoirymbong Market,,Umraling
+MLRIBHLIIO00,Iolin Mawlong,Paddy,"Mynri ,Lakang",2024,,,Liarbang
+MLRIBHUMIS00,Isidora Masharing,Ginger,Local,2024,Bhoirymbong Market,,Umraling
+MLRIBHLIIS00,Ismail Lamare,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLIIT00,Italis Rynjah,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLIIU00,Iulinda Sten,Paddy,,2024,,,Liarbang
+MLRIBHUMJI00,Jin Masharing,Ginger,Local,2024,Bhoirymbong Market,,Umraling
+MLRIBHLIJI00,Jinus Kharbithai,Paddy,,2024,,,Liarkhla
+MLRIBHLIJO00,Jol Masharing,Paddy,,2024,,,Liarbang
+MLRIBHSOJO00,Jorsing Marngar,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHSOJO02,Jorsing Teron,Ginger,,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLIJO01,Joy Masynting,Paddy,,2024,,,Liarbang
+MLRIBHLIJU00,Juliana Marbaniang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHKHKE00,Kenas Lamare,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHLIKE00,Kesterwel Sun,Paddy,,2024,,,Liarkhla
+MLRIBHMAKH00,Kharina Suting,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHMAKH01,Khotstarlin Marngar,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLIKI00,Kitbok Sujai,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHSOKO00,Kobet Engleng,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLIKO00,Kobri Mawlong,Paddy,,2024,,,Liarbang
+MLRIBHMAKO00,Komita Kharbani,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLIKR00,Krisphin Rymbai,Paddy,,2024,,,Liarkhla
+MLRIBHLIKY00,Kynjaimon Rymbai,Paddy,,2024,,,Liarkhla
+MLRIBHLIKY01,Kynsai Jalong,Paddy,"Mynri ,Jwain",2024,,,Liarbang
+MLRIBHLIKY02,Kynsai Ramde,Paddy,,2024,,,Liarbang
+MLRIBHKYLA00,Lamonsi Masynting,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHUMLA00,Lamphrang Janai Shadap,Ginger,Local,2024,Bhoirymbong Market,,Umraling
+MLRIBHMALI00,Lindaris Marngar,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLILU00,Lucia Mawlong,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHLILU01,Lukas Kharwar,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHSOMA00,Madan Bey,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHSOMA01,Makhias Khynriam,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLIMA02,Mansing Mawlong,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLIMA00,Marshal Mawphniang F,Paddy,,2024,,,Liarkhla
+MLRIBHLIMA03,Martina marbaniang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHMAMA00,Matilang Muktieh,Ginger,,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLIME00,Meban Rymbai,Paddy,,2024,,,Liarkhla
+MLRIBHKYME01,Melarisha Tamu,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHUMME00,Melis Masharing,Ginger,Local,2024,Bhoirymbong Market,,Umraling
+MLRIBHLIME01,Merial Khriam,Paddy,,2024,,,Liarbang
+MLRIBHLIME02,Merilinda Nongsiej,Paddy,Lakang Saw,2024,,,Liarbang
+MLRIBHUMME01,Merishon Shadap,Ginger,Local,2024,Bhoirymbong Market,,Umraling
+MLRIBHKYME04,Mesliang Masharing,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHMAME00,Metilda Suting,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLIMI00,Miletstar Nongrum,Paddy,Skuin,2024,,,Liarkhla
+MLRIBHKYMI01,Minu Pyngrope,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHKYMI02,Mirlin Ryntathiang,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHKYMO00,Morinda Pyngrope,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHKYNE00,Nerisha Mawroh,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHSOOV00,Overcome Pariat,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLIOV00,Oversing Wahlang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLIPA00,Palei Rymbai,Paddy,Jwain,2024,,,Liarkhla
+MLRIBHLIPA01,Parjesilin Wahlang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHKYPD00,Pdiangdukshen Shadap,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIPD00,Pdiangrity Ramde,Paddy,"Jwain ,Manipur ,Kba heh",2024,,,Liarkhla
+MLRIBHLIPH00,Philisita Sujai,Paddy,,2024,,,Liarbang
+MLRIBHLIPH01,Phining Marbaniang,Paddy,,2024,,,Liarbang
+MLRIBHMAPH00,Phom Kharbani,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLIPH02,Phrangsngi Nongrem,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHLIPH03,Phres Sumer,Paddy,,2024,,,Liarkhla
+MLRIBHLIPH04,Phring Marbaniang,Paddy,,2024,,,Liarbang
+MLRIBHLIPH05,Phriska Maklai,Paddy,,2024,,,Liarbang
+MLRIBHLIPI00,Pius Tado,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLIPR00,Prailin Suting,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHLIPR01,Presca Khathangmaw,Paddy,"Ryngkoh ,Lakang",2024,,,Liarkhla
+MLRIBHLIPY00,Pyndaplin Rynghang,Paddy,Lakang,2024,,,Liarbang
+MLRIBHKYPY00,Pynksan Mukhim,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIPY01,Pynlanglut Lamare,Paddy,,2024,,,Liarkhla
+MLRIBHKYPY01,Pynshisha Tamu,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIQU00,Queentina Wahlang,Paddy,,2024,,,Liarbang
+MLRIBHSORA00,Rang Teron,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLIRA00,Rangkynsai Rynghang,Paddy,,2024,,,Liarbang
+MLRIBHLIRI00,Riat Rymbai,Paddy,,2024,,,Liarkhla
+MLRIBHLIRI01,Ribok Maklai,Paddy,,2024,,,Liarbang
+MLRIBHLIRI02,Richard Lyngdoh,Paddy,,2024,,,Liarkhla
+MLRIBHLIRI03,Ridalin Mynsong,Paddy,,2024,,,Liarkhla
+MLRIBHKYRI01,Rika Pyngrope,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIRI04,Riping Lyngdoh,Paddy,,2024,,,Liarbang
+MLRIBHKHRI00,Risha Masharing,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHMARI00,Rishon Suting,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLIRI05,Ristar Rynjah,Paddy,Lakang,2024,,,Liarbang
+MLRIBHMARI01,Ritalin Mawlong,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHKYRO00,Robina Lamare,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHSORO00,Robinson Teron,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLIRO00,Rodis Mynsong,Paddy,"Kba Tban, Kba Heh",2024,,,Liarkhla
+MLRIBHSORO01,Ronghang RR,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHSORO02,Ronghang RW,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHKHRO00,Roni Lamare,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHKYRO02,Rophina Lamare,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLIRO01,Rotes Lyngdoh,Paddy,"Kba heh, pnah",2024,,,Liarkhla
+MLRIBHKHRU00,Rupa Sten,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHSORU00,Rupsing Bey,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHKHSA00,Sainkupar Nongrum,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHSOSA00,Samatan Durong,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHSOSA01,Samson Hanse,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLISA00,Sanbor Tado,Paddy,,2024,,,Liarkhla
+MLRIBHSOSA02,Sareing Teron,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLISE00,Sesilia Sujai,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHLISH00,Shailinda Marbaniang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang Thiahmiet
+MLRIBHLISH01,Shanbor Rympei,Paddy,Lakang,2024,,,Liarbang
+MLRIBHKHSH01,Shelidora Ronghang,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHKHSH03,Shining Syiemlieh,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHKYSH01,Shleilin Tamu,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLISH02,Shmirdalin Rynghang,Paddy,Lakang,2024,,,Liarbang
+MLRIBHMASI00,Sildaris Marngar,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHMASK00,Skhemborlang Nongrum,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHKHSK00,Skill Lamare,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHSOSO00,Sonison Engleng,Ginger,Local,2024,Bhoirymbong Market,,Sohliya
+MLRIBHLISP00,Spar Lyngdoh,Paddy,,2024,,,Liarbang
+MLRIBHLIST00,Stelin Nongsiej,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHMAST00,Stena Basaiawmoit,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHKHST00,Streamlet Pancho,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHLISU00,Sunalis Rynjah,Paddy,"Lakang,pnah",2024,,,Liarbang
+MLRIBHLISU01,Sunita Rynghang,Paddy,,2024,,,Liarbang
+MLRIBHLISW00,SWidian Lyngdoh,Paddy,,2024,,,Liarbang
+MLRIBHLITA00,Tap Marbaniang,Ginger,Local,2024,Bhoirymbong Market,,Liarbang
+MLRIBHMATA00,Tatabolin Kharbani,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHKYTE00,Terror Dorphang,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHMATH00,Therina Suting,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHKYTH01,Thinda Pyngrope,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHLITH00,This Lyngdoh,Paddy,,2024,,,Liarkhla
+MLRIBHKHTR00,Tres Marsynting,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHKYTR00,Tresinora Masharing,Ginger,Local,2024,Bhoirymbong Market,,Kyrdem
+MLRIBHKHTU00,Tuesday Lamare,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHUMWA00,Wanbakut Rani,Ginger,Local,2024,Bhoirymbong Market,,Umraling
+MLRIBHLIWA00,Wanbhakupar Rymbai,Paddy,"CAUR1,Barang,Khlem tre, Pnah sarang,J wain saw,Rangba",2024,,,Liarkhla
+MLRIBHLIWA02,Wanlambok Sumer,Paddy,jwain,2024,,,Liarkhla
+MLRIBHUMWA01,Wanpliedor Rynghang,Ginger,Local,2024,Bhoirymbong Market,,Umraling
+MLRIBHLIWA03,Wanpynshai Rymbai,Paddy,Mynri,2024,,,Liarkhla
+MLRIBHMAWA00,Wanrilang Muktieh,Ginger,Local,2024,Bhoirymbong Market,,Mawiambei
+MLRIBHLIWA04,Wanshai Tado,Paddy,Kba tban.,2024,,,Liarkhla
+MLRIBHKHWA00,Wansing Nongkharai,Ginger,Local,2024,Bhoirymbong Market,,Khliehumstem
+MLRIBHLIWA05,Was Shlem,Paddy,,2024,,,Liarkhla
+MLRIBHLIWA06,Wat Khriam,Paddy,,2024,,,Liarbang
+MLRIBHLIWI00,Winky Ryngkhang,Paddy,,2024,,,Liarkhla

@@ -5,6 +5,10 @@ const mapSchema = mongoose.Schema({
     excel_id: {
         type: String,
     },
+    farmer_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Farmer2024'
+    },
     area: {
         type: Number,
     },

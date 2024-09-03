@@ -95,7 +95,14 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
 
 
 async function importCropCSVToMongoDB(csvFilePath) {
+  // const farmers = await Farmer2024.find({});
+  // for(let farmer of farmers){
+  //   let {_id} = farmer;
+  //   await Farmer2024.updateOne({_id}, {crops : []});
+  //   console.log("Data updated Successfully.")
+  // }
   return new Promise((resolve, reject) => {
+
     fs.createReadStream(csvFilePath)
       .pipe(csv())
       .on('data', async (row) => {
@@ -107,12 +114,13 @@ async function importCropCSVToMongoDB(csvFilePath) {
             year: parseInt(row['Year'].trim()),
             majorbuyer: row['Major Buyer'].trim(),
             season: 'Other',  // Default value, adjust as needed
-            ownedLand: parseFloat(row['Acreage'].trim()),
+            ownedLand: 0, //parseFloat(row['Acerage'].trim())
             leasedLand: 0,  // Adjust this if you have leased land data
             yieldPerAcre: 0,  
             // cropassurefarmer: findFarmer._id,
             excel_id: row['ID'].trim(),
-            farmerName: row['Farmer Name'].trim()
+            farmerName: row['Farmer Name'].trim(),
+            crop_village : row['Crop Village'].trim(),
           };
 
           const findFarmer = await Farmer2024.findOne({excel_id: cropData.excel_id, farmerName: cropData.farmerName})
@@ -142,38 +150,49 @@ async function importCropCSVToMongoDB(csvFilePath) {
 }
 
 async function importSurveyCSVToMongoDB(csvFilePath) {
+  const farmers = await Farmer2024.find({});
+  for(let farmer of farmers){
+    let {_id} = farmer;
+    await Farmer2024.updateOne({_id}, {survey : []});
+    console.log("Data updated Successfully.")
+  }
   return new Promise((resolve, reject) => {
+
     fs.createReadStream(csvFilePath)
       .pipe(csv())
       .on('data', async (row) => {
         try {
-          const surveyData = {
-            excel_id: row['Farmer ID'].trim(),
-            farmerName: row['Farmer Name'].trim(),
-            village:['Village'],
-            cropName:row['Crop Name'],
-            cropIssueIdentified:['Crop Issue Identified'],
-            survey_no:row['Survey No'],
-            survey_date: row['Date Of Survey'].trim(),
-            map_link: row['Link to Prescription map'].trim(),  // Default value, adjust as needed
-            treatment: row['Treatment'].trim()
-          };
-
-          const findFarmer = await Farmer2024.findOne({excel_id: surveyData.excel_id, farmerName: surveyData.farmerName})
-
-          if (findFarmer) {
-              const createSurvey = await Survey.create(surveyData)
-              createSurvey.farmer_id = findFarmer._id
-              await createSurvey.save()
+          const link = row['Link to Prescription map'].trim();
+          if(link!=""){
+            const surveyData = {
+              excel_id: row['Farmer ID'].trim(),
+              farmerName: row['Farmer Name'].trim(),
+              village:['Village'],
+              cropName:row['Crop Name'],
+              cropIssueIdentified:['Crop Issue Identified'],
+              survey_no:row['Survey No'],
+              // survey_date: row['Date Of Survey'].trim(),
+              map_link: row['Link to Prescription map'].trim(),  // Default value, adjust as needed
+              treatment: row['Treatment'].trim()
+            };
   
-              findFarmer.survey.push(createSurvey._id)
-              await findFarmer.save();
+            const findFarmer = await Farmer2024.findOne({excel_id: surveyData.excel_id, farmerName: surveyData.farmerName})
+  
+            if (findFarmer) {
+                const createSurvey = await Survey.create(surveyData)
+                createSurvey.farmer_id = findFarmer._id;
+                await createSurvey.save();
+    
+                findFarmer.survey.push(createSurvey._id);
+                await findFarmer.save();
+            }
+            else{
+              console.log("no such farmer exist in farmer2024 collection with this excel_id:-",surveyData.excel_id);
+            }
           }
-          else{
-            console.log("no such farmer exist in farmer2024 collection with this excel_id:-",surveyData.excel_id);
-          }
-
+          
         } catch (error) {
+          console.log(row);
           console.error('Error processing row:', error.message);
         }
       })
