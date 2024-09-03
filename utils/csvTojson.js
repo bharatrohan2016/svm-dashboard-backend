@@ -148,23 +148,29 @@ async function importSurveyCSVToMongoDB(csvFilePath) {
       .on('data', async (row) => {
         try {
           const surveyData = {
-            excel_id: row['ID'].trim(),
+            excel_id: row['Farmer ID'].trim(),
             farmerName: row['Farmer Name'].trim(),
-            // farmer_id: findFarmer.farmer_id,
+            village:['Village'],
+            cropName:row['Crop Name'],
+            cropIssueIdentified:['Crop Issue Identified'],
+            survey_no:row['Survey No'],
             survey_date: row['Date Of Survey'].trim(),
-            map_link: row['Link'].trim(),  // Default value, adjust as needed
-            advisory: row['Advisory'].trim()
+            map_link: row['Link to Prescription map'].trim(),  // Default value, adjust as needed
+            treatment: row['Treatment'].trim()
           };
 
           const findFarmer = await Farmer2024.findOne({excel_id: surveyData.excel_id, farmerName: surveyData.farmerName})
 
           if (findFarmer) {
-            const createSurvey = await Survey.create(surveyData)
-            createSurvey.farmer_id = findFarmer._id
-            await createSurvey.save()
-
-            findFarmer.survey.push(createSurvey._id)
-            await findFarmer.save();
+              const createSurvey = await Survey.create(surveyData)
+              createSurvey.farmer_id = findFarmer._id
+              await createSurvey.save()
+  
+              findFarmer.survey.push(createSurvey._id)
+              await findFarmer.save();
+          }
+          else{
+            console.log("no such farmer exist in farmer2024 collection with this excel_id:-",surveyData.excel_id);
           }
 
         } catch (error) {

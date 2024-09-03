@@ -6,6 +6,16 @@ const SurveySchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  survey_no:{
+    type:Number,
+    required:true,
+    trim:true
+  },
+  cropName:{
+    type:String,
+    required:true,
+    trim:true
+  },
   excel_id: {
     type: String
   },
@@ -19,7 +29,7 @@ const SurveySchema = new mongoose.Schema({
   map_link: {
     type : String
   },
-  advisory: {
+  treatment: {
     type: String
   }
 }, {
