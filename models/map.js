@@ -1,22 +1,19 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
+
 const mapSchema = mongoose.Schema({
     excel_id: {
         type: String,
     },
-    feild_number: {
-        type: String,
-    },
     area: {
+        type: Number,
+    },
+    crop_name : {
         type: String,
     },
-    geometry: {
-        type: String
-    },
-    long: {
-        type: Number,
-    },
-    lat: {
-        type: Number,
+    polygons : {
+        type: [[[Number]]],
+        required : true
     },
     farmer_name: {
         type: String
@@ -24,6 +21,8 @@ const mapSchema = mongoose.Schema({
     village: {
         type: String
     }
+}, {
+    timestamps: true  // Automatically adds createdAt and updatedAt fields  
 })
 
 const Maps = mongoose.model('Maps', mapSchema)

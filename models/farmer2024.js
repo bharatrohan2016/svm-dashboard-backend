@@ -69,6 +69,12 @@ const Farmer2024Schema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Survey'
     }
+  ],
+  maps: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Maps'
+    }
   ]
 }, {
   timestamps: true  // Automatically adds createdAt and updatedAt fields

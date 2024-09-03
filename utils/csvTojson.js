@@ -2,7 +2,10 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const Farmer2024 = require('../models/farmer2024');  
 const Crop = require('../models/crops'); 
-const Survey = require('../models/survey')
+const Survey = require('../models/survey');
+const Maps = require('../models/map');
+const { streamKMLFile, calculatePolygonArea } = require('./kmlProcessing');
+
 
 async function importFarmerCSVToMongoDB(csvFilePath) {
   return new Promise((resolve, reject) => {
@@ -180,8 +183,53 @@ async function importSurveyCSVToMongoDB(csvFilePath) {
 }
   
 
+async function importPolygonToMongoDB(csvFilePath){
+  const farmers = await Farmer2024.find({});
+  for(let farmer of farmers){
+    let {_id} = farmer;
+    await Farmer2024.updateOne({_id}, {maps : []});
+    console.log("Data updated Successfully.")
+  }
+  return new Promise( (resolve, reject) => {
+    fs.createReadStream(csvFilePath)
+      .pipe(csv())
+      .on('data', async (row) => {
+        console.log(row);
+
+        const coordinates = row['Link to kml']!='' ? await streamKMLFile(row['Link to kml'].trim()) : [];
+        const area = row['Link to kml']!='' ? await calculatePolygonArea(coordinates) : 0;
+
+        console.log(coordinates);
+        console.log(area);
+        const polygonData = {
+          excel_id : row['Farmer ID'].trim(),
+          farmerName : row['Farmer Name'].trim(),
+          crop_name : row['Crop Name'].trim(),
+          polygons : coordinates,
+          area,
+        };
+
+        const findFarmer = await Farmer2024.findOne({excel_id: polygonData.excel_id, farmerName: polygonData.farmerName})
+
+        if (findFarmer) {
+          // const polygon = await Maps.find(polygonData);
+          // console.log(polygon)
+          // if(polygon.length ===0){
+            const createPolygon = await Maps.create(polygonData);
+            createPolygon.farmer_id = findFarmer._id;
+            await createPolygon.save();
+  
+            findFarmer.maps.push(createPolygon._id);
+            await findFarmer.save();
+          // }
+        }
+      }) 
+  })
+}
+
 module.exports = { 
   importFarmerCSVToMongoDB ,
   importCropCSVToMongoDB,
-  importSurveyCSVToMongoDB
+  importSurveyCSVToMongoDB,
+  importPolygonToMongoDB
 }

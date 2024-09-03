@@ -1,5 +1,7 @@
 const XmlStream = require('xml-stream');
 const { getDriveFile, getDriveFileId } = require('./googleDriveFunctions');
+const turf = require('@turf/turf');
+
 
 // Stream the KML file from Google Drive and extract coordinates
 const streamKMLFile = (driveFileUrl) => {
@@ -13,13 +15,14 @@ const streamKMLFile = (driveFileUrl) => {
             // which is necessary for xml-stream to work properly
             const xml = new XmlStream(data);
             
+			
             // Here you tell xml-stream to gather all text nodes inside <coordinates>
             xml.collect('coordinates');
 
              // This event triggers every time a </LinearRing> tag is closed
             let coordinates = [];
             xml.on('endElement: LinearRing', function(item) {
-                console.log(item);
+                // console.log(item);
     
                 // Check if the <coordinates> element exists to avoid null reference errors
                 if (item.coordinates) {
@@ -50,5 +53,33 @@ const streamKMLFile = (driveFileUrl) => {
     }
 };
 
+function convertCoords(coords) {
+    return coords.map(pair => {
+        if (Array.isArray(pair[0])) { // Check if this is a deeper array (e.g., polygon)
+            return convertCoords(pair); // Recursively convert
+        }
+        return [pair[1], pair[0]]; // Swap latitude and longitude
+    });
+}
 
-module.exports = {streamKMLFile};
+//send 2d array
+const calculatePolygonArea = (coordinates) => {
+	let area = 0;
+
+	for(let coordinate of coordinates){
+		console.log('====================================');
+		console.log(coordinate);
+		console.log('====================================');
+		// Convert the coordinates array into a GeoJSON Polygon
+		coordinate = convertCoords(coordinate);
+
+		const polygon = turf.polygon([coordinate]);
+
+		// Calculate the area in square meters
+		area += turf.area(polygon);
+	}
+  	
+	return area;
+}
+
+module.exports = {streamKMLFile, calculatePolygonArea};
