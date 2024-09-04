@@ -31,6 +31,9 @@ const SurveySchema = new mongoose.Schema({
   },
   treatment: {
     type: String
+  },
+  cropIssueIdentified: {
+    type: String
   }
 }, {
   timestamps: true  // Automatically adds createdAt and updatedAt fields

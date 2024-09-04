@@ -148,6 +148,15 @@ async function importCropCSVToMongoDB(csvFilePath) {
       });
   });
 }
+function parseDate(dateString) {
+ 
+  const parts = dateString.split('-'); // Split the string by dashes
+  const day = parseInt(parts[0], 10);  // Get the day
+  const month = parseInt(parts[1], 10) - 1; // Get the month (0-based index for JS Date)
+  const year = parseInt(parts[2], 10);  // Get the year
+
+  return new Date(year, month, day); // Return a new Date object
+}
 
 async function importSurveyCSVToMongoDB(csvFilePath) {
   const farmers = await Farmer2024.find({});
@@ -167,11 +176,11 @@ async function importSurveyCSVToMongoDB(csvFilePath) {
             const surveyData = {
               excel_id: row['Farmer ID'].trim(),
               farmerName: row['Farmer Name'].trim(),
-              village:['Village'],
-              cropName:row['Crop Name'],
-              cropIssueIdentified:['Crop Issue Identified'],
+              village:row['Village'].trim(),
+              cropName:row['Crop Name'].trim(),
+              cropIssueIdentified:row['Crop Issue Identified'].trim(),
               survey_no:row['Survey No'],
-              // survey_date: row['Date Of Survey'].trim(),
+              survey_date: parseDate(row['Date of survey'].trim()),
               map_link: row['Link to Prescription map'].trim(),  // Default value, adjust as needed
               treatment: row['Treatment'].trim()
             };
@@ -258,3 +267,7 @@ module.exports = {
   importSurveyCSVToMongoDB,
   importPolygonToMongoDB
 }
+
+
+// ("15/07/2024").split('/').join('-') = "15-07-2024"
+

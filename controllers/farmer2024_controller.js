@@ -3,7 +3,7 @@ const Crop=require('../models/crops')
 
 module.exports.findFarmer = async (req, res) => {
     try {
-        const data = await farmer2024.find().populate('crops')
+        const data = await farmer2024.find().populate([{path : 'crops',  select : 'cropName'}, { path : 'maps', select : 'area' }])
         res.status(201).json({ data })
     } catch (error) {
         console.log(error);
@@ -12,9 +12,12 @@ module.exports.findFarmer = async (req, res) => {
 }
 
 module.exports.filterFarmer = async (req, res) => {
+    let {crops} = req.body;
+    
     try {
-        let query = req.body;
-        let data = await findAll(query);
+        let data = await farmer2024.find({}).populate([{ path : 'crops', match : {cropName : crops}, select : 'cropName' }, { path : 'maps', select : 'area' }])
+        data = data.filter((item) => item.crops.length > 0);
+        
         res.send({
             result: "success", data
         })
@@ -64,7 +67,7 @@ module.exports.totalItems = async (req, res) => {
 module.exports.getOneFarmer = async (req, res) => {
     try {
         console.log("hit")
-        const data = await farmer2024.findOne({ _id: req.params.id }).populate('crops');
+        const data = await farmer2024.findOne({ _id: req.params.id }).populate([{path : 'crops'}, {path : 'maps'}, {path : 'survey'}]);
         console.log(data);
         res.send({
             result: "success",
