@@ -20,7 +20,7 @@ const db = mongoose.connect(
         useUnifiedTopology: true
     }
 ).then(async () => {
-    importFarmerCSVToMongoDB(farmerfilepath)
+    // importFarmerCSVToMongoDB(farmerfilepath)
     // importCropCSVToMongoDB(cropFilePath)
     // importSurveyCSVToMongoDB(surveyFilePath)
     // importPolygonToMongoDB(polygonFilePath)

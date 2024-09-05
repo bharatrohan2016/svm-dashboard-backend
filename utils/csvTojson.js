@@ -219,12 +219,12 @@ async function importSurveyCSVToMongoDB(csvFilePath) {
   
 
 async function importPolygonToMongoDB(csvFilePath){
-  const farmers = await Farmer2024.find({});
-  for(let farmer of farmers){
-    let {_id} = farmer;
-    await Farmer2024.updateOne({_id}, {maps : []});
-    console.log("Data updated Successfully.")
-  }
+  // const farmers = await Farmer2024.find({});
+  // for(let farmer of farmers){
+  //   let {_id} = farmer;
+  //   await Farmer2024.updateOne({_id}, {maps : []});
+  //   console.log("Data updated Successfully.")
+  // }
   return new Promise( (resolve, reject) => {
     fs.createReadStream(csvFilePath)
       .pipe(csv())
