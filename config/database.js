@@ -8,7 +8,7 @@ const conn_url = process.env.MONGOOSE_URI;
 
 const farmerfilepath = path.join(__dirname, '..', 'public', 'farmerdetails.csv')
 const cropFilePath = path.join(__dirname, '..', 'public', 'crop.csv')
-const surveyFilePath = path.join(__dirname, '..', 'public', 'survey.csv');
+const surveyFilePath = path.join(__dirname, '..', 'public', 'survey2.csv');
 const polygonFilePath = path.join(__dirname, '..', 'public', 'polygons.csv')
 
 
@@ -22,7 +22,7 @@ const db = mongoose.connect(
 ).then(async () => {
     // importFarmerCSVToMongoDB(farmerfilepath)
     // importCropCSVToMongoDB(cropFilePath)
-    // importSurveyCSVToMongoDB(surveyFilePath)
+    importSurveyCSVToMongoDB(surveyFilePath)
     // importPolygonToMongoDB(polygonFilePath)
     // const coordinates = await streamKMLFile("https://drive.google.com/file/d/1OXpHqY5p2oXdQVUf8_irCwyyVrmeTv46/view")
     

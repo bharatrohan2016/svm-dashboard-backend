@@ -178,10 +178,10 @@ async function importSurveyCSVToMongoDB(csvFilePath) {
               excel_id: row['Farmer ID'].trim(),
               farmerName: row['Farmer Name'].trim(),
               village:row['Village'].trim(),
-              cropName:row['Crop Name'].trim(),
+              cropName:row['Crop'].trim(),
               cropIssueIdentified:row['Crop Issue Identified'].trim(),
               survey_no:row['Survey No'],
-              survey_date: parseDate(row['Date of survey'].trim()),
+              survey_date: parseDate(row['Survey Date'].trim()),
               map_link: row['Link to Prescription map'].trim(),  // Default value, adjust as needed
               treatment: row['Treatment'].trim()
             };
