@@ -10,9 +10,8 @@ const protect = asyncHandler(async (req, res, next) => {
             token = req.headers.authorization.split(' ')[1]
             console.log(token);
             const verified = jwt.verify(token, process.env.SECRET_KEY);
-            console.log(verified);
             req.user = verified
-            next()
+            next();
         } catch (error) {
             console.log(error)
             res.status(401)
