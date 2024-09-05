@@ -1,5 +1,7 @@
 const farmer2024 = require('../models/farmer2024')
 const Crop=require('../models/crops')
+const Maps = require('../models/map')
+const { Parser } = require('json2csv');
 
 module.exports.findFarmer = async (req, res) => {
     try {
@@ -98,4 +100,45 @@ module.exports.cropwiseFarmernumber = async (req, res) => {
     } catch (err) {
         console.error('Error fetching crop counts:', err);
     }
+}
+
+module.exports.getFarmerCropAreaCSV = async (req, res) => {
+    try {
+        const result = await Maps.find({});
+        const data = [];
+    
+        for (let i = 0; i < result.length; i++) {
+            const findFarmer = await farmer2024.findOne({ excel_id: result[i].excel_id });
+            const farmerName = findFarmer?.farmerName;
+    
+            let existingEntry = data.find(
+                (entry) => entry.excel_id === result[i].excel_id && entry.crop_name === result[i].crop_name
+            );
+    
+            if (existingEntry) {
+                existingEntry.area += result[i].area;
+            } else {
+                data.push({
+                    excel_id: result[i].excel_id,
+                    farmername: farmerName,
+                    area: result[i].area,
+                    crop_name: result[i].crop_name,
+                });
+            }
+        }
+    
+        // Convert the data array to CSV
+        const fields = ['excel_id', 'farmername', 'area', 'crop_name']; 
+        const json2csvParser = new Parser({ fields });
+        const csv = json2csvParser.parse(data);
+    
+        res.header('Content-Type', 'text/csv');
+        res.attachment('farmers_data.csv'); 
+        res.status(200).send(csv);
+    
+    } catch (error) {
+        console.error('Error fetching crop counts:', error);
+        res.status(501).json('Check Console');
+    }
+    
 }
