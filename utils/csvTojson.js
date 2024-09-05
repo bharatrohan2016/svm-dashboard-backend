@@ -164,7 +164,7 @@ async function importSurveyCSVToMongoDB(csvFilePath) {
   for(let farmer of farmers){
     let {_id} = farmer;
     await Farmer2024.updateOne({_id}, {survey : []});
-    console.log("Data updated Successfully.")
+    // console.log("Data updated Successfully.")
   }
   return new Promise((resolve, reject) => {
 
