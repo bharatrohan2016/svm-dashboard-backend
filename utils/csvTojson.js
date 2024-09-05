@@ -25,7 +25,8 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
           postalCode: row['Postal Code']?.trim(),
           lat: row['Lat']?.trim(),
           long: row['Lng']?.trim(),
-          area: row['Area']?.trim()
+          area: row['Area']?.trim(),
+          excel_id: row['Farmer ID'].trim()
         };
         farmers.push(farmerData);
       })
@@ -73,7 +74,7 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
               return uniqueId;
             };
 
-            farmerData.excel_id = await generateId();
+            // farmerData.excel_id = await generateId();
 
             // If farmer was not found, create a new record
             await Farmer2024.create(farmerData);

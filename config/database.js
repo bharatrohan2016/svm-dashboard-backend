@@ -6,7 +6,7 @@ const { streamKMLFile, calculatePolygonArea } = require('../utils/kmlProcessing'
 const conn_url = process.env.MONGOOSE_URI;
 // const conn_url = process.env.MONGOOSE_LOCAL;
 
-const filepath = path.join(__dirname, '..', 'public', 'farmerdetails.csv')
+const farmerfilepath = path.join(__dirname, '..', 'public', 'farmerdetails.csv')
 const cropFilePath = path.join(__dirname, '..', 'public', 'crop.csv')
 const surveyFilePath = path.join(__dirname, '..', 'public', 'survey.csv');
 const polygonFilePath = path.join(__dirname, '..', 'public', 'polygons.csv')
@@ -20,7 +20,7 @@ const db = mongoose.connect(
         useUnifiedTopology: true
     }
 ).then(async () => {
-    // importFarmerCSVToMongoDB(filepath)
+    importFarmerCSVToMongoDB(farmerfilepath)
     // importCropCSVToMongoDB(cropFilePath)
     // importSurveyCSVToMongoDB(surveyFilePath)
     // importPolygonToMongoDB(polygonFilePath)
