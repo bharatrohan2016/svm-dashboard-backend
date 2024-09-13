@@ -96,12 +96,12 @@ async function importFarmerCSVToMongoDB(csvFilePath) {
 
 
 async function importCropCSVToMongoDB(csvFilePath) {
-  // const farmers = await Farmer2024.find({});
-  // for(let farmer of farmers){
-  //   let {_id} = farmer;
-  //   await Farmer2024.updateOne({_id}, {crops : []});
-  //   console.log("Data updated Successfully.")
-  // }
+  const farmers = await Farmer2024.find({});
+  for(let farmer of farmers){
+    let {_id} = farmer;
+    await Farmer2024.updateOne({_id}, {crops : []});
+    console.log("Data updated Successfully.")
+  }
   return new Promise((resolve, reject) => {
 
     fs.createReadStream(csvFilePath)
@@ -160,12 +160,12 @@ function parseDate(dateString) {
 }
 
 async function importSurveyCSVToMongoDB(csvFilePath) {
-  const farmers = await Farmer2024.find({});
-  for(let farmer of farmers){
-    let {_id} = farmer;
-    await Farmer2024.updateOne({_id}, {survey : []});
-    // console.log("Data updated Successfully.")
-  }
+  // const farmers = await Farmer2024.find({});
+  // for(let farmer of farmers){
+  //   let {_id} = farmer;
+  //   await Farmer2024.updateOne({_id}, {survey : []});
+  //   console.log("Data updated Successfully.")
+  // }
   return new Promise((resolve, reject) => {
 
     fs.createReadStream(csvFilePath)
@@ -195,6 +195,7 @@ async function importSurveyCSVToMongoDB(csvFilePath) {
     
                 findFarmer.survey.push(createSurvey._id);
                 await findFarmer.save();
+            
             }
             else{
               console.log("no such farmer exist in farmer2024 collection with this excel_id:-",surveyData.excel_id);

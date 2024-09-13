@@ -22,7 +22,7 @@ const db = mongoose.connect(
 ).then(async () => {
     // importFarmerCSVToMongoDB(farmerfilepath)
     // importCropCSVToMongoDB(cropFilePath)
-    importSurveyCSVToMongoDB(surveyFilePath)
+    // importSurveyCSVToMongoDB(surveyFilePath)
     // importPolygonToMongoDB(polygonFilePath)
     // const coordinates = await streamKMLFile("https://drive.google.com/file/d/1OXpHqY5p2oXdQVUf8_irCwyyVrmeTv46/view")
     
