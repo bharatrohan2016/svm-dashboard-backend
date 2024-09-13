@@ -142,3 +142,97 @@ module.exports.getFarmerCropAreaCSV = async (req, res) => {
     }
     
 }
+
+module.exports.getVillageWiseArea= async (req,res) =>{
+    try{
+        // farmer2024.aggregate([
+        //     {
+        //       $lookup: {
+        //         from: 'Maps', // The target collection
+        //         localField: 'maps', // Field from the Farmer collection
+        //         foreignField: '_id', // Field from the Maps collection
+        //         as: 'mapDetails' // The name of the field to add with matched documents
+        //       }
+        //     }
+            // ,
+            // {
+            //   $unwind: '$mapDetails' // Deconstruct the mapDetails array
+            // }
+            // ,
+            // {
+            //   $group: {
+            //     _id: '$village', // Group by the village field
+            //     totalArea: { $sum: '$mapDetails.area' } // Sum up the area field from mapDetails
+            //   }
+            // }
+        //   ]).exec()
+        //     .then(results => {
+        //       console.log(results); // Print the aggregated results
+        //       res.status(200).json("api hit ho gyi")
+        //     })
+        //     .catch(err => {
+        //       console.error(err);
+        //     });
+        // const data = await farmer2024.find({}).populate('maps').
+        // console.log(data);
+        // res.status(200).json("api hit")
+        const farmers = await farmer2024.find({})
+      .populate('maps') // Populate the maps field
+      .exec();
+
+    // Compute total area for each village
+    const villageAreaMap = {};
+
+    farmers.forEach(farmer => {
+      const village = farmer.village;
+      const totalArea = farmer.maps.reduce((sum, map) => sum + (map.area || 0), 0);
+
+      if (villageAreaMap[village]) {
+        villageAreaMap[village] += totalArea;
+      } else {
+        villageAreaMap[village] = totalArea;
+      }
+    });
+
+    // Convert the result to an array of objects
+    const result = Object.keys(villageAreaMap).map(village => ({
+      village,
+      totalArea: villageAreaMap[village]
+    }));
+
+    // console.log(result);
+    res.status(200).json(result)
+    }
+    catch(e){
+        console.log("GetVillageWiseArea function error: ",e)
+        res.status(501).json(e)
+    }
+}
+
+module.exports.getVillageWiseFarmerNumber= async (req,res) =>{
+    try{
+        
+        farmer2024.aggregate([
+            {
+              $group: {
+                _id: "$village", // Group by the 'village' field
+                count: { $sum: 1 } // Count the number of documents per group
+              }
+            },
+            {
+              $sort: { count: -1 } // Optional: Sort by count in descending order
+            }
+          ]).exec()
+            .then(results => {
+              console.log(results); // Print results as an array
+              res.status(200).json(results)
+            }).catch(err => {
+                console.error(err);
+              });
+    }
+    catch(e){
+        console.log("village wise farmer number function error: ",e)
+        res.status(501).json(e)
+    }
+}
+
