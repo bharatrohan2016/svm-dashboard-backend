@@ -6,11 +6,10 @@ const Farmer2024Schema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  // fatherName: {
-  //   type: String,
-  //   required: true,
-  //   trim: true
-  // },
+  fatherName: {
+    type: String,
+    trim: true
+  },
   phoneNumber: {
     type: String,
     required: false,

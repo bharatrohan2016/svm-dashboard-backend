@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
-const { importFarmerCSVToMongoDB, importCropCSVToMongoDB, importSurveyCSVToMongoDB, importPolygonToMongoDB } = require('../utils/csvTojson'); 
+const { importFarmerCSVToMongoDB,importFarmerFatherNameCSVToMongoDB, importCropCSVToMongoDB, importSurveyCSVToMongoDB, importPolygonToMongoDB } = require('../utils/csvTojson'); 
 const path = require('path');
 const { streamKMLFile, calculatePolygonArea } = require('../utils/kmlProcessing');
 
-const conn_url = process.env.MONGOOSE_URI;
+// const conn_url = process.env.MONGOOSE_URI;
 // const conn_url = process.env.MONGOOSE_LOCAL;
 
-const farmerfilepath = path.join(__dirname, '..', 'public', 'farmerdetails.csv')
+const farmerfilepath = path.join(__dirname, '..', 'public', 'farmerListForFather.csv')
 const cropFilePath = path.join(__dirname, '..', 'public', 'crop.csv')
-const surveyFilePath = path.join(__dirname, '..', 'public', 'survey2.csv');
+const surveyFilePath = path.join(__dirname, '..', 'public', 'survey2-Paddy.csv');
 const polygonFilePath = path.join(__dirname, '..', 'public', 'polygons.csv')
 
 
@@ -21,6 +21,7 @@ const db = mongoose.connect(
     }
 ).then(async () => {
     // importFarmerCSVToMongoDB(farmerfilepath)
+    //    importFarmerFatherNameCSVToMongoDB(farmerfilepath)
     // importCropCSVToMongoDB(cropFilePath)
     // importSurveyCSVToMongoDB(surveyFilePath)
     // importPolygonToMongoDB(polygonFilePath)
