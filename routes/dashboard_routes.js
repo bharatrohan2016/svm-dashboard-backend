@@ -3,8 +3,6 @@ const { totalItems } = require('../controllers/dashboard_controllers');
 const router = express.Router(); 
 const protect = require('../middlewares/authMiddleware')
 
-
-router.get('/totalitems', protect, totalItems)
-
+router.get('/totalitems', totalItems)
 
 module.exports = router;

@@ -3,7 +3,7 @@ const { importFarmerCSVToMongoDB,importFarmerFatherNameCSVToMongoDB, importCropC
 const path = require('path');
 const { streamKMLFile, calculatePolygonArea } = require('../utils/kmlProcessing');
 
-// const conn_url = process.env.MONGOOSE_URI;
+const conn_url = process.env.MONGOOSE_URI;
 // const conn_url = process.env.MONGOOSE_LOCAL;
 
 const farmerfilepath = path.join(__dirname, '..', 'public', 'farmerListForFather.csv')

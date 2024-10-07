@@ -15,12 +15,11 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-app.use('/api', router)
 app.use('/api', farmerRoutes);
 app.use('/api', testRoutes);
 app.use('/api', farmer2024)
 app.use('/api', polygonRoutes);
-
+app.use('/api', router)
 
 app.listen(PORT, () => {
     console.log(`Server Listening on ${PORT}`);
